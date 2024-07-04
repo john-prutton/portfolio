@@ -15,11 +15,12 @@ export const Hero = () => {
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 10 }}
-        className="relative aspect-video overflow-clip rounded-sm grayscale sm:order-2 sm:aspect-square md:aspect-video"
+        className="relative aspect-square overflow-clip rounded-sm grayscale sm:order-2"
       >
         <Image
           src={PictureOfMe}
-          placeholder="empty"
+          priority
+          placeholder="blur"
           blurDataURL={PictureOfMe.blurDataURL}
           alt="Me"
           fill

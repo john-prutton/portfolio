@@ -1,11 +1,14 @@
 import type { Metadata } from "next"
-import { Bricolage_Grotesque } from "next/font/google"
+import localFont from "next/font/local"
 
 import "./globals.css"
 
 import { Navbar } from "@/components/navbar"
 
-const font = Bricolage_Grotesque({ subsets: ["latin"] })
+const font = localFont({
+  src: "../../public/fonts/GeneralSans-Variable.woff2",
+  variable: "--satoshi"
+})
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={font.variable}>
         <Navbar />
         {children}
       </body>

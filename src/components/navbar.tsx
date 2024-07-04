@@ -42,7 +42,7 @@ const Logo = () => (
 )
 
 export const Navbar = () => (
-  <div className="border-b">
+  <div className="sticky top-0 z-10 mb-8 border-b bg-background/70 backdrop-blur-xl md:mb-16">
     <nav className="container flex flex-row items-center justify-between py-4">
       <Logo />
 

@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion"
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { frameworks, languages, RenderIcon, tools } from "./technologies"
@@ -28,40 +35,58 @@ export const TechStack = () => (
               </h2>
 
               <div className="!mt-0 flex flex-row flex-wrap gap-x-8 gap-y-12">
-                {group.map((icon, index) => (
-                  <div
-                    key={icon.slug}
-                    className="relative flex flex-col items-center"
-                  >
-                    <motion.div
-                      key={icon.slug}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 15,
-                        delay: index * 0.1
-                      }}
-                      viewport={{ once: true }}
-                      style={{
-                        backgroundColor: `color-mix(in lch, #${icon.hex} 10%, transparent)`
-                      }}
-                      className="relative overflow-clip rounded p-3"
-                    >
-                      <div
-                        style={{ background: "#" + icon.hex }}
-                        className="absolute size-10 rounded-full opacity-25 blur-lg"
-                      />
+                <Carousel
+                  className="w-full"
+                  opts={{
+                    dragFree: true,
+                    loop: true
+                  }}
+                >
+                  <CarouselContent className="-ml-pl-20">
+                    {group.map((icon, index) => (
+                      <CarouselItem
+                        key={icon.slug}
+                        className="basis-1/5 pl-20 md:basis-1/12"
+                      >
+                        <div
+                          key={icon.slug}
+                          className="relative flex flex-col items-center"
+                        >
+                          <motion.div
+                            key={icon.slug}
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 200,
+                              damping: 15
+                              // delay: index * 0.1
+                            }}
+                            viewport={{ once: false }}
+                            style={{
+                              backgroundColor: `color-mix(in lch, #${icon.hex} 10%, transparent)`
+                            }}
+                            className="relative overflow-clip rounded p-3"
+                          >
+                            <div
+                              style={{ background: "#" + icon.hex }}
+                              className="absolute size-10 rounded-full opacity-25 blur-lg"
+                            />
 
-                      <RenderIcon icon={icon} className="relative size-10" />
-                    </motion.div>
+                            <RenderIcon
+                              icon={icon}
+                              className="relative size-10"
+                            />
+                          </motion.div>
 
-                    <span className="absolute -bottom-2 mx-auto mt-2 translate-y-full text-center text-xs text-muted-foreground">
-                      {icon.title}
-                    </span>
-                  </div>
-                ))}
+                          <span className="absolute -bottom-2 mx-auto mt-2 translate-y-full text-center text-xs text-muted-foreground">
+                            {icon.title}
+                          </span>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
               </div>
             </div>
           )

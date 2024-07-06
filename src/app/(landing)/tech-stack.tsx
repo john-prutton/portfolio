@@ -40,8 +40,10 @@ export const TechStack = () => (
               dragFree: true,
               loop: true
             }}
-            className="cursor-grab select-none"
+            className="relative cursor-grab select-none"
           >
+            <div className="absolute left-0 z-10 h-full w-1/4 bg-gradient-to-l from-transparent to-background" />
+            <div className="absolute right-0 z-10 h-full w-1/4 bg-gradient-to-r from-transparent to-background" />
             <CarouselContent>
               {group.map((icon) => (
                 <CarouselItem

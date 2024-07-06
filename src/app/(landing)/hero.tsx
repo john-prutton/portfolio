@@ -32,7 +32,7 @@ export const Hero = () => {
         />
       </motion.div>
 
-      <div className="">
+      <div className="relative overflow-hidden">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,9 +43,9 @@ export const Hero = () => {
         </motion.span>
 
         <FlipWords
-          words={["Web App", "MVP", "Backend"]}
+          words={["Web App", "MVP", "Backend", "Business"]}
           className="text-5xl font-black text-primary"
-          duration={5000}
+          duration={3000}
           wordAnimations={{
             initial: {
               opacity: 0,

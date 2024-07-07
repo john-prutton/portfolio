@@ -25,7 +25,7 @@ import {
   siVuedotjs
 } from "simple-icons"
 
-type Icon = Pick<SimpleIcon, "hex" | "title" | "path" | "slug"> & {
+export type Icon = Pick<SimpleIcon, "hex" | "title" | "path" | "slug"> & {
   favorite?: true
 }
 

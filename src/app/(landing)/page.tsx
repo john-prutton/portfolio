@@ -1,11 +1,16 @@
-import { Hero } from "./hero"
-import { TechStack } from "./tech-stack"
+import { HeroParallax } from "./hero-parallax"
+import { frameworks, languages, tools } from "./technologies"
 
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <TechStack />
+      <HeroParallax
+        icons={{
+          frameworks,
+          tools,
+          languages
+        }}
+      />
     </main>
   )
 }

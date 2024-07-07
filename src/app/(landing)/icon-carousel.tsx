@@ -44,14 +44,14 @@ export function IconCarousel({
             className="relative basis-1/3 pb-10 pl-16 sm:basis-1/4 md:basis-1/5"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 15
-              }}
-              viewport={{ once: false }}
+              // initial={{ opacity: 0, scale: 0 }}
+              // whileInView={{ opacity: 1, scale: 1 }}
+              // transition={{
+              //   type: "spring",
+              //   stiffness: 200,
+              //   damping: 15
+              // }}
+              // viewport={{ once: false }}
               className="relative mx-auto w-fit"
             >
               <div

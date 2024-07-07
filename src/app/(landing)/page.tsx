@@ -11,6 +11,7 @@ export default function Home() {
           languages
         }}
       />
+      <div className="h-svh bg-red-500"></div>
     </main>
   )
 }

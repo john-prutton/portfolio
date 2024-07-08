@@ -7,14 +7,20 @@ import { LucideSendHorizonal } from "lucide-react"
 
 import PictureOfMe from "@/../public/me.jpeg"
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 import { FlipWords } from "./flip-words"
 import { MovingBorderButton } from "./moving-border-button"
 
-export const Hero = () => {
+export const Hero = ({ className }: { className?: string }) => {
   return (
-    <section className="mx-auto grid items-center gap-8 sm:grid-cols-2">
-      <motion.div
+    <section
+      className={cn(
+        "mx-auto grid items-center gap-8 sm:grid-cols-2",
+        className
+      )}
+    >
+      {/* <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 10 }}
@@ -30,7 +36,7 @@ export const Hero = () => {
           // sizes="(max-width: 600px) 100vw, 800px"
           className="object-cover object-[50%_40%]"
         />
-      </motion.div>
+      </motion.div> */}
 
       <div className="relative overflow-hidden">
         <motion.span

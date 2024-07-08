@@ -5,22 +5,11 @@ import React, { useEffect } from "react"
 import { motion, useScroll, useSpring, useTransform } from "framer-motion"
 import Lenis from "lenis"
 
+import { Hero } from "./hero"
 import { IconCarousel } from "./icon-carousel"
-import { Icon } from "./technologies"
+import { frameworks, languages, tools } from "./technologies"
 
-export const HeroParallax = ({
-  icons
-}: {
-  icons: {
-    languages: Icon[]
-    frameworks: Icon[]
-    tools: Icon[]
-  }
-}) => {
-  const firstRow = icons.languages
-  const secondRow = icons.frameworks
-  const thirdRow = icons.tools
-
+export const HeroParallax = () => {
   const ref = React.useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -29,29 +18,26 @@ export const HeroParallax = ({
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 }
 
-  // const translateX = useSpring(
-  //   useTransform(scrollYProgress, [0, 1], [0, 1000]),
-  //   springConfig
-  // )
-  // const translateXReverse = useSpring(
-  //   useTransform(scrollYProgress, [0, 1], [0, -1000]),
-  //   springConfig
-  // )
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
     springConfig
   )
+
+  const initialOpacity = 0.2
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    useTransform(scrollYProgress, [0, 0.2], [initialOpacity, 1]),
     springConfig
   )
-  const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig
+  const rotateZ = useTransform(
+    useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]), springConfig),
+    (v) => `min(var(--max-rotate-z,0deg),${v}deg)`
   )
   const translateY = useTransform(
-    useSpring(useTransform(scrollYProgress, [0, 0.2], [-100, 0]), springConfig),
-    (v) => `${v}%`
+    useSpring(
+      useTransform(scrollYProgress, [0, 0.2, 1], [-100, 0, 100]),
+      springConfig
+    ),
+    (v) => `max(var(--min-translate-y,0%),${v}%)`
   )
 
   useEffect(() => {
@@ -68,37 +54,28 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="relative flex flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+      className="relative -mt-8 flex flex-col self-auto overflow-hidden antialiased [perspective:500px] [transform-style:preserve-3d] md:-mt-16"
     >
-      <Header />
+      <Hero className="z-10 py-20 md:pt-40 lg:pt-96" />
+
       <motion.div
+        className="sm:[--max-rotate-z:20deg] sm:[--min-translate-y:-999%]"
         style={{
           rotateX,
           rotateZ,
           opacity,
-          translateY: translateY
+          translateY
         }}
-        className=""
+        initial={{ opacity: 0 }}
+        animate={{ opacity: initialOpacity }}
+        transition={springConfig}
       >
-        <IconCarousel icons={firstRow} autoScrollDirection="backward" />
-        <IconCarousel icons={secondRow} autoScrollDirection="forward" />
-        <IconCarousel icons={thirdRow} autoScrollDirection="backward" />
+        <IconCarousel icons={languages} autoScrollDirection="backward" />
+        <IconCarousel icons={frameworks} autoScrollDirection="forward" />
+        <IconCarousel icons={tools} autoScrollDirection="backward" />
       </motion.div>
-    </div>
-  )
-}
 
-export const Header = () => {
-  return (
-    <div className="--py-20 --md:py-40 relative left-0 top-0 z-10 mx-auto w-full max-w-7xl select-none px-4">
-      <h1 className="text-2xl font-bold dark:text-white md:text-7xl">
-        The Ultimate <br /> development studio
-      </h1>
-      <p className="mt-8 max-w-2xl text-base dark:text-neutral-200 md:text-xl">
-        We build beautiful products with the latest technologies and frameworks.
-        We are a team of passionate developers and designers that love to build
-        amazing products.
-      </p>
+      <div className="absolute bottom-0 h-1/5 w-full bg-gradient-to-t from-background to-transparent" />
     </div>
   )
 }

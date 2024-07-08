@@ -1,7 +1,4 @@
-"use client"
-
 import AutoScroll from "embla-carousel-auto-scroll"
-import { motion } from "framer-motion"
 
 import {
   Carousel,
@@ -43,17 +40,7 @@ export function IconCarousel({
             key={icon.slug}
             className="relative basis-1/3 pb-10 pl-16 sm:basis-1/4 md:basis-1/5"
           >
-            <motion.div
-              // initial={{ opacity: 0, scale: 0 }}
-              // whileInView={{ opacity: 1, scale: 1 }}
-              // transition={{
-              //   type: "spring",
-              //   stiffness: 200,
-              //   damping: 15
-              // }}
-              // viewport={{ once: false }}
-              className="relative mx-auto w-fit"
-            >
+            <div className="relative mx-auto w-fit">
               <div
                 style={{
                   backgroundColor: `color-mix(in lch, #${icon.hex} 10%, transparent)`
@@ -67,7 +54,7 @@ export function IconCarousel({
 
                 <RenderIcon icon={icon} className="relative w-full" />
               </div>
-            </motion.div>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>

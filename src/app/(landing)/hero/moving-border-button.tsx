@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useRef } from "react"
 
 import {
@@ -14,18 +15,18 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 export function MovingBorderButton({
-  borderRadius = "1.75rem",
+  href,
+  borderRadius,
   children,
-  as: Component = Button,
   containerClassName,
   borderClassName,
   duration,
   className,
   ...otherProps
 }: {
-  borderRadius?: string
+  href: string
+  borderRadius: string
   children: React.ReactNode
-  as?: any
   containerClassName?: string
   borderClassName?: string
   duration?: number
@@ -33,7 +34,7 @@ export function MovingBorderButton({
   [key: string]: any
 }) {
   return (
-    <Component
+    <Button
       className={cn(
         "relative h-16 overflow-hidden bg-transparent p-0.5 text-xl",
         containerClassName
@@ -41,34 +42,37 @@ export function MovingBorderButton({
       style={{
         borderRadius: borderRadius
       }}
+      asChild
       {...otherProps}
     >
-      <div
-        className="absolute inset-0"
-        style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
-      >
-        <MovingBorder duration={duration} rx="30%" ry="30%">
-          <div
-            className={cn(
-              "size-10 bg-[radial-gradient(var(--primary)_40%,transparent_60%)] opacity-70",
-              borderClassName
-            )}
-          />
-        </MovingBorder>
-      </div>
+      <Link href={href}>
+        <div
+          className="absolute inset-0"
+          style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
+        >
+          <MovingBorder duration={duration} rx="30%" ry="30%">
+            <div
+              className={cn(
+                "size-10 bg-[radial-gradient(var(--primary)_40%,transparent_60%)] opacity-70",
+                borderClassName
+              )}
+            />
+          </MovingBorder>
+        </div>
 
-      <div
-        className={cn(
-          "relative flex h-full w-full items-center justify-center border border-slate-800 bg-slate-900/80 antialiased backdrop-blur-xl",
-          className
-        )}
-        style={{
-          borderRadius: `calc(${borderRadius} * 0.96)`
-        }}
-      >
-        {children}
-      </div>
-    </Component>
+        <div
+          className={cn(
+            "relative flex h-full w-full items-center justify-center border border-slate-800 bg-slate-900/80 antialiased backdrop-blur-xl",
+            className
+          )}
+          style={{
+            borderRadius: `calc(${borderRadius} * 0.96)`
+          }}
+        >
+          {children}
+        </div>
+      </Link>
+    </Button>
   )
 }
 

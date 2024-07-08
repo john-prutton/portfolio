@@ -89,6 +89,7 @@ export const Hero = ({ className }: { className?: string }) => {
           transition={{ delay: 0.6, duration: 0.5 }}
         >
           <MovingBorderButton
+            href="/contact"
             duration={10000}
             className="text-xl tracking-widest text-foreground"
             containerClassName="w-full"

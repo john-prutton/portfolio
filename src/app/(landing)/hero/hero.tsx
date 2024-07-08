@@ -1,12 +1,8 @@
 "use client"
 
-import Image from "next/image"
-
 import { motion } from "framer-motion"
 import { LucideSendHorizonal } from "lucide-react"
 
-import PictureOfMe from "@/../public/me.jpeg"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 import { FlipWords } from "./flip-words"
@@ -20,24 +16,6 @@ export const Hero = ({ className }: { className?: string }) => {
         className
       )}
     >
-      {/* <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 10 }}
-        className="relative aspect-square overflow-clip rounded-sm grayscale sm:order-2"
-      >
-        <Image
-          src={PictureOfMe}
-          priority
-          placeholder="blur"
-          blurDataURL={PictureOfMe.blurDataURL}
-          alt="Me"
-          fill
-          // sizes="(max-width: 600px) 100vw, 800px"
-          className="object-cover object-[50%_40%]"
-        />
-      </motion.div> */}
-
       <div className="relative overflow-hidden">
         <motion.span
           initial={{ opacity: 0, y: 20 }}

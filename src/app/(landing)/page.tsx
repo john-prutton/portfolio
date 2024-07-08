@@ -1,4 +1,4 @@
-import { HeroParallax } from "./hero-parallax"
+import { HeroParallax } from "./hero"
 
 export default function Home() {
   return (

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import { LucideMenu } from "lucide-react"
@@ -33,10 +34,21 @@ const Logo = () => (
   <Button
     variant="ghost"
     asChild
-    className="-m-2 flex size-fit flex-col items-start p-2 text-xl font-black leading-none"
+    className="-m-2 flex size-fit flex-row items-center gap-4 p-2 text-xl font-black leading-none"
   >
     <Link href="/">
-      <span>John</span> <span>Prutton</span>
+      <Image
+        src="/me.jpeg"
+        alt="john_prutton.jpeg"
+        fill
+        sizes="48px"
+        className="!relative !size-12 rounded-full object-cover grayscale"
+      />
+      <div>
+        <span>John</span>
+        <br />
+        <span>Prutton</span>
+      </div>
     </Link>
   </Button>
 )

@@ -31,8 +31,8 @@ export function IconCarousel({
       }}
       className="relative w-full cursor-grab select-none"
     >
-      <div className="absolute left-0 z-10 h-full w-1/4 bg-gradient-to-l from-transparent to-background" />
-      <div className="absolute right-0 z-10 h-full w-1/4 bg-gradient-to-r from-transparent to-background" />
+      <div className="pointer-events-none absolute left-0 z-10 h-full w-1/4 bg-gradient-to-l from-transparent to-background" />
+      <div className="pointer-events-none absolute right-0 z-10 h-full w-1/4 bg-gradient-to-r from-transparent to-background" />
 
       <CarouselContent className="-ml-16">
         {icons.map((icon) => (

@@ -12,7 +12,7 @@ export const Hero = ({ className }: { className?: string }) => {
   return (
     <section
       className={cn(
-        "mx-auto grid items-center gap-8 sm:grid-cols-2",
+        "pointer-events-none mx-auto grid items-center gap-8 sm:grid-cols-2",
         className
       )}
     >
@@ -91,7 +91,7 @@ export const Hero = ({ className }: { className?: string }) => {
           <MovingBorderButton
             href="/contact"
             duration={10000}
-            className="text-xl tracking-widest text-foreground"
+            className="pointer-events-auto text-xl tracking-widest text-foreground"
             containerClassName="w-full"
             borderClassName="bg-primary rounded-full"
             borderRadius="var(--radius)"

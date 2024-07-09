@@ -1,16 +1,15 @@
 "use client"
 
-import React, { useEffect } from "react"
+import { useRef } from "react"
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion"
-import Lenis from "lenis"
 
 import { Hero } from "./hero"
 import { IconCarousel } from "./icon-carousel"
 import { frameworks, languages, tools } from "./technologies"
 
 export const HeroParallax = () => {
-  const ref = React.useRef(null)
+  const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
@@ -40,17 +39,6 @@ export const HeroParallax = () => {
     (v) => `max(var(--min-translate-y,0%),${v}%)`
   )
 
-  useEffect(() => {
-    const lenis = new Lenis()
-
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-  }, [])
-
   return (
     <div
       ref={ref}
@@ -75,7 +63,7 @@ export const HeroParallax = () => {
         <IconCarousel icons={tools} autoScrollDirection="backward" />
       </motion.div>
 
-      <div className="absolute bottom-0 h-1/5 w-full bg-gradient-to-t from-background to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 h-1/5 w-full bg-gradient-to-t from-background to-transparent" />
     </div>
   )
 }

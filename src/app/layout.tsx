@@ -1,13 +1,15 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 
+import PlausibleProvider from "next-plausible"
+
 import "./globals.css"
 
 import { Navbar } from "@/components/navbar"
 
 const font = localFont({
   src: "../../public/fonts/GeneralSans-Variable.woff2",
-  variable: "--satoshi"
+  variable: "--font"
 })
 
 export const metadata: Metadata = {
@@ -28,6 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <PlausibleProvider
+          domain={new URL(process.env.BASE_URL!).hostname}
+          customDomain={process.env.PLAUSIBLE_CUSTOM_DOMAIN}
+          selfHosted
+        />
+      </head>
       <body className={font.variable}>
         <Navbar />
         {children}

@@ -1,10 +1,11 @@
 import { HeroParallax } from "./hero"
+import { ProjectsSection } from "./projects"
 
 export default function Home() {
   return (
-    <main>
+    <main className="space-y-16">
       <HeroParallax />
-      <div className="h-svh"></div>
+      <ProjectsSection />
     </main>
   )
 }

@@ -1,11 +1,11 @@
-import { Hero } from "./hero"
-import { TechStack } from "./tech-stack"
+import { HeroParallax } from "./hero"
+import { ProjectsSection } from "./projects"
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <TechStack />
+    <main className="space-y-16">
+      <HeroParallax />
+      <ProjectsSection />
     </main>
   )
 }

@@ -1,38 +1,22 @@
 "use client"
 
-import Image from "next/image"
-
 import { motion } from "framer-motion"
 import { LucideSendHorizonal } from "lucide-react"
 
-import PictureOfMe from "@/../public/me.jpeg"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 import { FlipWords } from "./flip-words"
 import { MovingBorderButton } from "./moving-border-button"
 
-export const Hero = () => {
+export const Hero = ({ className }: { className?: string }) => {
   return (
-    <section className="mx-auto grid items-center gap-8 sm:grid-cols-2">
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 10 }}
-        className="relative aspect-square overflow-clip rounded-sm grayscale sm:order-2"
-      >
-        <Image
-          src={PictureOfMe}
-          priority
-          placeholder="blur"
-          blurDataURL={PictureOfMe.blurDataURL}
-          alt="Me"
-          fill
-          // sizes="(max-width: 600px) 100vw, 800px"
-          className="object-cover object-[50%_40%]"
-        />
-      </motion.div>
-
-      <div className="">
+    <section
+      className={cn(
+        "pointer-events-none mx-auto grid items-center gap-8 sm:grid-cols-2",
+        className
+      )}
+    >
+      <div className="relative overflow-hidden">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,9 +27,9 @@ export const Hero = () => {
         </motion.span>
 
         <FlipWords
-          words={["Web App", "MVP", "Backend"]}
+          words={["Web App", "MVP", "Backend", "Business"]}
           className="text-5xl font-black text-primary"
-          duration={5000}
+          duration={3000}
           wordAnimations={{
             initial: {
               opacity: 0,
@@ -105,8 +89,9 @@ export const Hero = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
         >
           <MovingBorderButton
+            href="mailto:johnrprutton@gmail.com"
             duration={10000}
-            className="text-xl tracking-widest text-foreground"
+            className="pointer-events-auto text-xl tracking-widest text-foreground"
             containerClassName="w-full"
             borderClassName="bg-primary rounded-full"
             borderRadius="var(--radius)"

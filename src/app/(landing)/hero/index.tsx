@@ -4,9 +4,10 @@ import { useRef } from "react"
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion"
 
+import { frameworks, languages, tools } from "@/components/technologies"
+
 import { Hero } from "./hero"
 import { IconCarousel } from "./icon-carousel"
-import { frameworks, languages, tools } from "./technologies"
 
 export const HeroParallax = () => {
   const ref = useRef(null)

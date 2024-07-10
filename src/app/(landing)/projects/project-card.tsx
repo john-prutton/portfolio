@@ -4,6 +4,7 @@ import Link from "next/link"
 import { LucideExternalLink } from "lucide-react"
 import { siGithub } from "simple-icons"
 
+import { RenderIcon } from "@/components/technologies"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,7 +13,6 @@ import {
   CarouselItem
 } from "@/components/ui/carousel"
 
-import { RenderIcon } from "../hero/technologies"
 import { ProjectInfo } from "./data"
 
 export function ProjectCard({ project }: { project: ProjectInfo }) {

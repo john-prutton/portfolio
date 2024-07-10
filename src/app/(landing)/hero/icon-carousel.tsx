@@ -1,12 +1,11 @@
 import AutoScroll from "embla-carousel-auto-scroll"
 
+import { Icon, RenderIcon } from "@/components/technologies"
 import {
   Carousel,
   CarouselContent,
   CarouselItem
 } from "@/components/ui/carousel"
-
-import { Icon, RenderIcon } from "./technologies"
 
 export function IconCarousel({
   icons,

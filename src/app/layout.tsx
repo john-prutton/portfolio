@@ -5,6 +5,7 @@ import PlausibleProvider from "next-plausible"
 
 import "./globals.css"
 
+import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 
 const font = localFont({
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body className={font.variable}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )

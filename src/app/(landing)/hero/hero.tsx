@@ -16,6 +16,9 @@ export const Hero = ({ className }: { className?: string }) => {
         className
       )}
     >
+      <h1 className="sr-only">
+        Start building your business&apos;s fullstack web apps today.
+      </h1>
       <div className="relative overflow-hidden">
         <motion.span
           initial={{ opacity: 0, y: 20 }}

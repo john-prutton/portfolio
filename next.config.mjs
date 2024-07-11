@@ -1,10 +1,30 @@
+import withMDX from "@next/mdx"
 import { withPlausibleProxy } from "next-plausible"
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+/** @typedef {import("next").NextConfig} NextConfig */
 
-const nextConfigWithPlausibleProxy = withPlausibleProxy({
-  customDomain: process.env.PLAUSIBLE_CUSTOM_DOMAIN
-})(nextConfig)
+/** @type {NextConfig} */
+const nextConfig = {
+  pageExtensions: ["tsx"]
+}
 
-export default nextConfigWithPlausibleProxy
+/** @type {Array<(nc: NextConfig) => NextConfig>} */
+const plugins = [
+  (config) =>
+    withPlausibleProxy({
+      customDomain: process.env.PLAUSIBLE_CUSTOM_DOMAIN
+    })(config),
+
+  (config) =>
+    withMDX()({
+      ...config,
+      pageExtensions: [...(config.pageExtensions ?? []), "mdx"]
+    })
+]
+
+const nextWithPlugins = plugins.reduce(
+  (config, plugin) => plugin(config),
+  nextConfig
+)
+
+export default nextWithPlugins

@@ -14,6 +14,7 @@ export type ProjectInfo = {
   tags: string[]
   description: string[]
   images: StaticImageData[]
+  blogLink: string
   link?: string
   archived?: true
   production?: true
@@ -27,6 +28,7 @@ export const projects: ProjectInfo[] = [
     description: [
       "Carley is a web application that simplifies tracking nutrition. It allows users to upload pictures of their meals, and uses computer vision to identify the food items in the image. Users can then log the food items and track their daily nutrition intake."
     ],
+    blogLink: "/blog/carley",
     link: "https://carley.johnprutton.dev",
     githubLink: "https://github.com/john-prutton/carley",
     production: true,
@@ -39,7 +41,7 @@ export const projects: ProjectInfo[] = [
     ]
   },
   {
-    title: "Guildeline For Students",
+    title: "Guildelines For Students",
     tags: ["Custom CMS", "Portal", "Blog", "Role-based Access"],
     description: [
       `
@@ -52,6 +54,7 @@ export const projects: ProjectInfo[] = [
         uploading images.
       `
     ],
+    blogLink: "/blog/guidelines-for-students",
     archived: true,
     production: true,
     images: [

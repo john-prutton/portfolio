@@ -1,7 +1,11 @@
+import Image from "next/image"
+
 import { readdir, readFile } from "node:fs/promises"
 import { join, parse } from "path"
 
 import { compileMDX } from "next-mdx-remote/rsc"
+
+import { cn } from "@/lib/utils"
 
 const articlesDir = join(process.cwd(), "src/app/blog/articles")
 
@@ -20,10 +24,24 @@ export const readArticle = async (slug: string) => {
   const filePath = join(articlesDir, fileName)
   const fileContent = await readFile(filePath, "utf-8")
 
-  const { frontmatter, content } = await compileMDX({
+  const { frontmatter, content } = await compileMDX<{
+    title: string
+    date: string
+  }>({
     source: fileContent,
     options: {
       parseFrontmatter: true
+    },
+    components: {
+      CustomImage: ({ src, alt, className }) => (
+        <Image
+          src={src!}
+          alt={alt!}
+          fill
+          sizes="(max-width:1300px) 100vw, 1300px"
+          className={cn("!relative aspect-square object-cover", className)}
+        />
+      )
     }
   })
 

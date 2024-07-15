@@ -33,14 +33,55 @@ export const readArticle = async (slug: string) => {
       parseFrontmatter: true
     },
     components: {
-      CustomImage: ({ src, alt, className }) => (
-        <Image
-          src={src!}
-          alt={alt!}
-          fill
-          sizes="(max-width:1300px) 100vw, 1300px"
-          className={cn("!relative aspect-square object-cover", className)}
-        />
+      CustomImage: ({
+        src,
+        alt,
+        className
+      }: {
+        src: string
+        alt: string
+        className: string
+      }) => (
+        <div
+          className={cn(
+            "relative mx-auto my-16 aspect-square max-w-2xl",
+            className
+          )}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="680.764"
+            height="528.354"
+            viewBox="0 0 180.119 139.794"
+            className="absolute inset-0 h-full w-full animate-pulse bg-muted"
+          >
+            <g
+              transform="translate(-13.59 -66.639)"
+              paintOrder="fill markers stroke"
+            >
+              <path
+                d="m118.507 133.514-34.249 34.249-15.968-15.968-41.938 41.937H178.726z"
+                opacity=".675"
+                className="fill-background"
+              />
+              <circle
+                cx="58.217"
+                cy="108.555"
+                r="11.773"
+                opacity=".675"
+                className="fill-background"
+              />
+            </g>
+          </svg>
+
+          <Image
+            src={src!}
+            alt={alt!}
+            fill
+            sizes="672px"
+            className="object-cover"
+          />
+        </div>
       )
     }
   })
